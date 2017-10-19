@@ -110,7 +110,7 @@ namespace SimpleWifi
 					int len = password.Length;
 
 					bool correctLength = len == 10 || len == 26 || len == 40;
-					bool onlyHex = new Regex("^[0-9A-F]+$").IsMatch(password);
+					bool onlyHex = new Regex("^[0-9A-F]+$", RegexOptions.IgnoreCase).IsMatch(password);
 
 					return correctLength && onlyHex;
 				}
