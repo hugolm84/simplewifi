@@ -44,5 +44,4 @@ namespace SimpleWifi.Win32.Interop
 			}
 		}
 	}
-
 }

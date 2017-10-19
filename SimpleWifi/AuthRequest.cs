@@ -17,11 +17,11 @@ namespace SimpleWifi
 
 		public AuthRequest(AccessPoint ap)
 		{	
-			_network	= ap.Network;
-			_interface	= ap.Interface;
+			_network = ap.Network;
+			_interface = ap.Interface;
 
 			_isPasswordRequired = 
-				_network.securityEnabled &&
+			_network.securityEnabled &&
 				_network.dot11DefaultCipherAlgorithm != Dot11CipherAlgorithm.None;
 
 			_isEAPStore =
@@ -29,7 +29,7 @@ namespace SimpleWifi
 				_network.dot11DefaultAuthAlgorithm == Dot11AuthAlgorithm.WPA;
 
 			_isUsernameRequired = _isEAPStore;
-			_isDomainSupported	= _isEAPStore;
+			_isDomainSupported = _isEAPStore;
 		}
 		
 		public bool IsPasswordRequired	{ get { return _isPasswordRequired; } }
@@ -71,7 +71,7 @@ namespace SimpleWifi
 			string userXML = EapUserFactory.Generate(_network.dot11DefaultCipherAlgorithm, _username, _password, _domain);
 			_interface.SetEAP(_network.profileName, userXML);
 
-			return true;		
+			return true;
 		}
 
 		internal bool Process()
@@ -83,7 +83,7 @@ namespace SimpleWifi
 			_interface.SetProfile(WlanProfileFlags.AllUser, profileXML, true);
 
 			if (_isEAPStore && !SaveToEAP())
-				return false;			
+				return false;
 			
 			return true;
 		}
@@ -99,8 +99,11 @@ namespace SimpleWifi
 			switch (cipherAlgorithm)
 			{
 				case Dot11CipherAlgorithm.None:
+				{
 					return true;
+				}
 				case Dot11CipherAlgorithm.WEP: // WEP key is 10, 26 or 40 hex digits long.
+				{
 					if (string.IsNullOrEmpty(password))
 						return false;
 
@@ -110,12 +113,15 @@ namespace SimpleWifi
 					bool onlyHex = new Regex("^[0-9A-F]+$").IsMatch(password);
 
 					return correctLength && onlyHex;
-				case Dot11CipherAlgorithm.CCMP: // WPA2-PSK 8 to 63 ASCII characters					
+				}
+				case Dot11CipherAlgorithm.CCMP: // WPA2-PSK 8 to 63 ASCII characters
 				case Dot11CipherAlgorithm.TKIP: // WPA-PSK 8 to 63 ASCII characters
+				{
 					if (string.IsNullOrEmpty(password))
 						return false;
 
 					return 8 <= password.Length && password.Length <= 63;
+				}
 				default:
 					return true;
 			}

@@ -245,8 +245,8 @@ namespace SimpleWifi.Win32
 		private WlanAvailableNetwork[] ConvertAvailableNetworkListPtr(IntPtr availNetListPtr)
 		{
 			WlanAvailableNetworkListHeader availNetListHeader = (WlanAvailableNetworkListHeader)Marshal.PtrToStructure(availNetListPtr, typeof(WlanAvailableNetworkListHeader));
-			long availNetListIt = availNetListPtr.ToInt64() + Marshal.SizeOf(typeof(WlanAvailableNetworkListHeader));			
-			WlanAvailableNetwork[] availNets = new WlanAvailableNetwork[availNetListHeader.numberOfItems];			
+			long availNetListIt = availNetListPtr.ToInt64() + Marshal.SizeOf(typeof(WlanAvailableNetworkListHeader));
+			WlanAvailableNetwork[] availNets = new WlanAvailableNetwork[availNetListHeader.numberOfItems];
 			for (int i = 0; i < availNetListHeader.numberOfItems; ++i)
 			{
 				availNets[i] = (WlanAvailableNetwork)Marshal.PtrToStructure(new IntPtr(availNetListIt), typeof(WlanAvailableNetwork));
@@ -403,7 +403,7 @@ namespace SimpleWifi.Win32
 								{
 									switch ((WlanNotificationCodeMsm)wlanConnectionData.notifyData.notificationCode)
 									{
-										case WlanNotificationCodeMsm.Connected:										
+										case WlanNotificationCodeMsm.Connected:
 											if (wlanConnectionData.connNotifyData.profileName == profile)
 												return true;
 											break;

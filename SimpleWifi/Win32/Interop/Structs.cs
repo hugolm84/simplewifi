@@ -7,7 +7,6 @@ using System.Text;
 
 namespace SimpleWifi.Win32.Interop
 {
-
 	/// <summary>
 	/// The header of an array of information about available networks.
 	/// </summary>
@@ -173,7 +172,6 @@ namespace SimpleWifi.Win32.Interop
 
 		}
 	}
-
 
 	/// <summary>
 	/// Specifies the parameters used when using the <see cref="WlanConnect"/> function.
@@ -354,7 +352,6 @@ namespace SimpleWifi.Win32.Interop
 		}
 	}
 
-
 	/// <summary>
 	/// Contains information about connection related notifications.
 	/// </summary>
@@ -397,7 +394,6 @@ namespace SimpleWifi.Win32.Interop
 		[MarshalAs(UnmanagedType.ByValTStr, SizeConst = 1)]
 		public string profileXml;
 	}
-
 
 	/// <summary>
 	/// Contains the SSID of an interface.

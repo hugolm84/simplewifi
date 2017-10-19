@@ -225,12 +225,12 @@ namespace SimpleWifi.Win32.Interop
 		Disconnecting,
 		Disconnected,
 		AdhocNetworkStateChange,
-        Profile_unblocked,
-        ScreenPowerChange,
-        ProfileBlocked,
-        ScanListRefresh,
-        AcmEnd
-    }
+		Profile_unblocked,
+		ScreenPowerChange,
+		ProfileBlocked,
+		ScanListRefresh,
+		AcmEnd
+	}
 
 	/// <summary>
 	/// Indicates the type of an MSM (<see cref="WlanNotificationSource.MSM"/>) notification.
@@ -280,7 +280,6 @@ namespace SimpleWifi.Win32.Interop
 		/// </summary>
 		EapolPassthrough = 0x00000008
 	}
-
 
 	/// <summary>
 	/// The connection state of an ad hoc network.
@@ -548,7 +547,6 @@ namespace SimpleWifi.Win32.Interop
 		MSMSEC_MAX = MSMSEC_END
 	}
 
-
 	/// <summary>
 	/// Indicates the state of an interface.
 	/// </summary>
@@ -590,7 +588,6 @@ namespace SimpleWifi.Win32.Interop
 		/// </summary>
 		Authenticating = 7
 	}
-
 
 	/// <summary>
 	/// Defines an 802.11 PHY and media type.
@@ -663,7 +660,6 @@ namespace SimpleWifi.Win32.Interop
 		/// </summary>
 		Any = 3
 	}
-
 
 	/// <summary>
 	/// Defines the mode of connection.
@@ -828,7 +824,6 @@ namespace SimpleWifi.Win32.Interop
 		NetworkMonitor = 0x80000000
 	}
 
-	
 	/// <summary>
 	/// A set of flags that modify the behavior of the function: WlanSetProfileEapUserData
 	/// 
@@ -838,7 +833,7 @@ namespace SimpleWifi.Win32.Interop
 	[Flags]
 	public enum SetEapUserDataMode : uint
 	{
-		None						= 0x00000000,
-		WlanSetEaphostDataAllUsers	= 0x00000001
+		None = 0x00000000,
+		WlanSetEaphostDataAllUsers = 0x00000001
 	}
 }

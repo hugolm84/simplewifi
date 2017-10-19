@@ -16,24 +16,29 @@ namespace SimpleWifi
 		/// </summary>
 		internal static string Generate(WlanAvailableNetwork network, string password)
 		{
-			string profile	= string.Empty;
+			string profile = string.Empty;
 			string template = string.Empty;
-			string name		= Encoding.ASCII.GetString(network.dot11Ssid.SSID, 0, (int)network.dot11Ssid.SSIDLength);
-			string hex		= GetHexString(network.dot11Ssid.SSID);	
+			string name = Encoding.ASCII.GetString(network.dot11Ssid.SSID, 0, (int)network.dot11Ssid.SSIDLength);
+			string hex = GetHexString(network.dot11Ssid.SSID);
 
 			var authAlgo = network.dot11DefaultAuthAlgorithm;
 
 			switch (network.dot11DefaultCipherAlgorithm)
 			{
 				case Dot11CipherAlgorithm.None:
-					template = GetTemplate("OPEN");					
+				{
+					template = GetTemplate("OPEN");
 					profile = string.Format(template, name, hex);
 					break;
+				}
 				case Dot11CipherAlgorithm.WEP:
-					template = GetTemplate("WEP");					
+				{
+					template = GetTemplate("WEP");
 					profile = string.Format(template, name, hex, password);
 					break;
+				}
 				case Dot11CipherAlgorithm.CCMP:
+				{
 					if (authAlgo == Dot11AuthAlgorithm.RSNA)
 					{
 						template = GetTemplate("WPA2-Enterprise-PEAP-MSCHAPv2");
@@ -45,7 +50,9 @@ namespace SimpleWifi
 						profile = string.Format(template, name, password);
 					}
 					break;
+				}
 				case Dot11CipherAlgorithm.TKIP:
+				{
 					#warning Robin: Not sure WPA uses RSNA
 					if (authAlgo == Dot11AuthAlgorithm.RSNA)
 					{
@@ -58,10 +65,11 @@ namespace SimpleWifi
 						profile = string.Format(template, name, password);
 					}
 
-					break;			
+					break;
+				}
 				default:
 					throw new NotImplementedException("Profile for selected cipher algorithm is not implemented");
-			}					
+			}
 
 			return profile;
 		}

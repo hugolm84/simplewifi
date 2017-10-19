@@ -24,10 +24,12 @@ namespace SimpleWifi
 			{
 				case Dot11CipherAlgorithm.CCMP: // WPA-2
 				case Dot11CipherAlgorithm.TKIP: // WPA
+				{
 					template = GetTemplate("PEAP-MS-CHAPv2");
 
 					profile = string.Format(template, username, FixPass(password), domain);
 					break;
+				}
 				default:
 					throw new NotImplementedException("Profile for selected cipher algorithm is not implemented");
 			}
@@ -57,7 +59,6 @@ namespace SimpleWifi
 
 			return pass;
 		}
-
 
 		private static string EncodeToBase64(string toEncode)
 		{
