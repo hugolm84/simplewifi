@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>SimpleWifi-Fork</id>
+    <version>$version$</version>
+    <title>SimpleWifi</title>
+    <authors>DigiExam AB, Robin Wassen, Hugo Lindström</authors>
+    <owners>Hugo Lindström</owners>
+    <licenseUrl>https://github.com/hugolm84/simplewifi/LICENSE.md</licenseUrl>
+    <projectUrl>https://github.com/hugolm84/simplewifi/</projectUrl>
+    <iconUrl>https://avatars3.githubusercontent.com/u/7890777?s=140</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>.NET 4.5 library to manage wifi connections in Windows - written in C#</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright &#x00A9; DigiExam AB, Hugo Lindström.</copyright>
+    <tags>wifi networking</tags>
+  </metadata>
+  <files>
+	<file src="SimpleWifi\bin\$configuration$\SimpleWifi.dll" target="lib\net40\" />
+  </files>
+</package>
